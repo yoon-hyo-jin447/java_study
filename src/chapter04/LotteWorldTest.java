@@ -37,7 +37,7 @@ public class LotteWorldTest {
 				
 		
 	//((6세 이상 키가 120cm이상) || (6세이하 키가 120 보호자)) &&(심장질환)
-		String result = (((age >6) && (height>120) || (age<6) && (height>120) && (parent = true)) && (dease = false))?
+		String result = (((age >6) && (height>120) || (age<6) && (height>120) && (parent = true)) && (dease == false))?
 				"탑승가능!!" : "탑승 불가능!";
 //		String result = (((age>=6) && (height>=120)) || ((age<6) && (height>=120) && (parent == true)) && (dease == false))?
 //				"탑승가능!!" : "탑승 불가능";
