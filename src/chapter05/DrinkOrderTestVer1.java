@@ -58,6 +58,10 @@ public class DrinkOrderTestVer1 {
 		System.out.println("-- step1 종료 --");
 		System.out.println("주문하신 음료는" + menuName + "입니다"+" 가격은 " + price + " 입니다");
 		
+		//step3: 메뉴 결제 기능
+		
+		//step4: 메뉴 
+		
 		
 	}
 
