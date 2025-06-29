@@ -2,7 +2,7 @@ package chapter05;
 /*
  * 
  */
-
+// https://github.com/TJG404/
 import java.util.Scanner;
 
 public class GugudanVer1 {
