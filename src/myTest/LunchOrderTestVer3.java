@@ -18,6 +18,7 @@ public class LunchOrderTestVer3 {
 		int[] totalAmountList = new int[MAX_SIZE];
 		int[] paidAmointList =new int[MAX_SIZE];
 		int[] changeList = new int[MAX_SIZE];
+		int paymentCount = 0;
 		boolean menuFlag = true;
 		while(menuFlag) {
 			System.out.println("******************************************");
@@ -113,16 +114,47 @@ public class LunchOrderTestVer3 {
 									System.out.println("지금까지 넣은 금액"+charge);
 									
 								}
-							}
+							}//while문 종료
+							totalAmountList[paymentCount] = totalPayment;
+							
+							paymentMenuList[paymentCount] = orderMenuList[1];
+							
+							paidAmointList[paymentCount] = charge;
+							changeList[paymentCount] = change;
 							
 							System.out.println("음식 결제 내역------------------------");	
 							System.out.println("메뉴명\t결제금액\t잔돈------------------------");
+							System.out.print(paymentMenuList[0]+"..등");
+							System.out.print(totalAmountList[paymentCount]);
+							System.out.print(paymentMenuList[paymentCount]);
+							System.out.print(paidAmointList[paymentCount]);
+							System.out.print(changeList[paymentCount]+"\n");
 							
 							System.out.println("결제 완료");
+							
+							orderMenuList = new String[MAX_SIZE];
+							orderPriceList = new int[MAX_SIZE];
+							menuCount =0;
+							paymentCount++;
 							break;
 							
 						case 4:
+							if(paymentCount !=0) {
 							System.out.println("\t 4. 결제 내역");
+							System.out.println("메뉴명\t결제금액\t지불금액\t잔돈------------------------");
+							for(int i=0;i<paymentCount;i++) {
+								System.out.print(paymentMenuList[i]+"\t");
+								System.out.print(totalAmountList[i]+"\t");
+								System.out.print(paidAmointList[i]+"\t");
+								System.out.print(changeList[i]+"\n");	
+							}
+							
+
+							}
+							else {
+							System.out.println("결제내역이 없습니다");
+							}
+							break;
 							
 						case 9:
 							System.out.println("\t 9. 프로그램 종료");	

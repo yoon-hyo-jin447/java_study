@@ -44,6 +44,7 @@ public class ScoreTestVer3 {
 			System.out.println("5. 학생 삭제");		
 			System.out.println("9. 프로그램 종료");		
 			System.out.println("-----------------------------------------");
+			
 			System.out.print("메뉴선택(숫자)> ");
 			menu = scan.nextInt();
 			
@@ -68,8 +69,9 @@ public class ScoreTestVer3 {
 										
 					System.out.print("계속 입력 하시겠습니까?(계속:아무키나누르세요, 종료:n)> ");
 					if(scan.next().equals("n")) {
-						i = nameList.length; //break;
+//						i = nameList.length;
 						System.out.println("=> 등록 완료!!");
+						break;// 반복 종료
 					}
 				}
 				
@@ -99,8 +101,20 @@ public class ScoreTestVer3 {
 					boolean searchFlag = true;
 					while(searchFlag) {						
 						System.out.print("학생명 검색> ");  //조회할 학생명 입력
-						String searchName = scan.next();		
-						//nameList에서 입력한 학생명 검색 --> 학생의  nameList 주소를 변수에 저장한다.
+						String searchName = scan.next();
+						
+//						for(int i=0;i<count;i++ ) {
+//							if(scan.next().equals(nameList[i])) {
+//								System.out.print(nameList[i]+"\t");
+//								System.out.print(korList[i]+"\t");
+//								System.out.print(engList[i]+"\t");
+//								System.out.print(mathList[i]+"\t");
+//								System.out.print(totList[i]+"\t");
+//								System.out.println(avgList[i]);
+//							}
+//						}
+						
+//						nameList에서 입력한 학생명 검색 --> 학생의  nameList 주소를 변수에 저장한다.
 						int searchIdx = -1;
 						int countIdx = 0;
 						for(String name : nameList) {
