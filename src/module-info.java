@@ -4,5 +4,5 @@
 /**
  * 
  */
-module java_study1 {
+module java_study {
 }
