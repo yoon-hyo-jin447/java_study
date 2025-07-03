@@ -1,4 +1,4 @@
-package chapter07;
+package myTest;
 
 /*
  *  - 학생 3명의 점수를 입력 받는다.
@@ -12,7 +12,8 @@ public class ScoreMgmSystemTest {
 		ScoreMgmSystem tjsms =  new ScoreMgmSystem();
 		tjsms.insert();
 		tjsms.show();
-		
+		tjsms.update();
+		tjsms.remove();
 		System.out.println("--- main 종료 ---");
 
 	}
