@@ -136,7 +136,12 @@ public class ScoreMgmSystem {
 		}
 		
 		for(int i=deleteIdx;i<count-1;i++ ) {
+			if(i == count-1) {
+				sList[i] = sList[i];
+			}
+			else {
 			sList[i] = sList[i+1];
+			}
 		}
 		count--;
 		System.out.println("remove");
@@ -154,7 +159,7 @@ public class ScoreMgmSystem {
 			String searchName=scan.next();
 			int searchIdx = -1;
 			for(int i=0;i<count;i++) {
-				if(searchName == sList[i].name) {
+				if(searchName.equals(sList[i].name)) {
 					searchIdx = i;
 				}
 			}
