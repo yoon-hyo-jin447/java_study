@@ -3,194 +3,251 @@ package myTest;
 import java.util.Scanner;
 
 public class ScoreMgmSystem {
-	
-//[클래스명 : ScoreMgmSystem]
-//Field : admin:String, sname:Student,
-//constructor : ScoreMgmSystem()
-//Method : insert(), update(), remove(), search()
-	
 	//Field
-	String admin;
-	Student student;
-	Scanner scan = new Scanner(System.in);
-	
+	int password;
 	Student[] sList = new Student[10];
+	Scanner scan = new Scanner(System.in);
 	int count = 0;
+	
+	
+	
 	//Constructor
-	
-	
 	public ScoreMgmSystem() {
 		
 	}
 	
 	
+	
 	//Method
+	public void menuShow() {
+			System.out.println("---------------------------------------");
+			System.out.println("1. 학생 추가\t2. 전체 학생 조회");
+			System.out.println("3. 특정 학생 조회\t4. 특정 학생 수정");
+			System.out.println("5. 특정 학생 삭제\t9. 프로그램 종료");
+			System.out.println("원하시는 메뉴를 선택해주세요(숫자)");
+			System.out.println("---------------------------------------");
+			if(scan.hasNextInt()) {
+				int menuNumber = scan.nextInt();
+				menuCheck(menuNumber);
+			}
+			else {
+				System.out.println("잘못된 입력입니다 숫자로 입력해주세요");
+				menuShow();
+			}
+	}
+	
+	public void menuCheck(int menuNumber) {
+		switch(menuNumber) {
+		case 1:
+			insert();
+			break;
+		case 2:
+			searchAll();
+			menuShow();
+			break;
+		case 3:
+			searchIvl();
+			break;
+		case 4:
+			update();
+			
+			break;
+		case 5:
+			delete();
+			
+			break;
+		case 9:
+			System.out.println("프로그램을 종료합니다");
+			System.exit(0);
+			break;	
+		}
+	}
 	
 	public void insert() {
-		
-//		student = new Student();
-		for(int i=count;i<10;i++) {
-		sList[count] = new Student();
-		System.out.println("학생명");
-		sList[i].name = scan.next();
-		
-		System.out.println("국어점수");
-		sList[i].kor = scan.nextInt();
-		
-		System.out.println("영어점수");
-		sList[i].eng = scan.nextInt();
-		
-		System.out.println("수학점수");
-		sList[i].math = scan.nextInt();
-		
-		System.out.println("=> 등록완료!!");
+		System.out.println("학생 추가 화면입니다");
+		System.out.print("추가할 학생을 입력해주세요");
+		sList[count] = new Student(); //
+		sList[count].name = scan.next();
+		System.out.print("국어 점수>");
+		sList[count].kor = scan.nextInt();
+		System.out.print("수학 점수>");
+		sList[count].math = scan.nextInt();
+		System.out.print("영어 점수>");
+		sList[count].eng = scan.nextInt();
+		System.out.print("추가 완료");
 		count++;
 		
 		
-		System.out.println("그만하시겠습니까? 그만할거면 n");
+		System.out.print("더 추가하시겠습니까?  맞으면(아무키) : 종료(n)");
 		if(scan.next().equals("n")) {
-			break;
+			menuShow();
+		}
+		else {
+			insert();
 		}
 		
-		if(count == 10) {
-			System.out.println("더이상 등록을 못합니다 종료하겠습니다");
-			break;
+		
+		
+		
+		
+	}
+	
+	public void searchAll() {
+		if(count != 0) {
+			System.out.println("학생명\t국어\t수학\t영어\t총점\t평균");
+			for(Student student : sList) {
+				if(student != null) {
+				System.out.print(student.name+"\t");
+				System.out.print(student.kor+"\t");
+				System.out.print(student.math+"\t");
+				System.out.print(student.eng+"\t");
+				System.out.print(student.getTot()+"\t");
+				System.out.print(student.getAvg()+"\n");
+				}
+				else break;
+			}
+			menuShow();
+		}
+		else {
+			System.out.println("조회할 데이터가 없습니다.");
+			menuShow();
+		}
+	}
+	
+	public void searchIvl() {
+		if(count !=0) {
+		int searchIdx = searchIndex("조회");
+				
+		if(searchIdx != -1) {
+		
+			appearSystem(searchIdx);
+			
+			System.out.print("더 조회하시겠습니까?  맞으면(아무키) : 종료(n)");
+				if(scan.next().equals("n")) {
+					menuShow();
+				}
+				else {
+					searchIvl();
+				}
+		}
+		else {
+			System.out.println("검색한 학생을 찾을 수가 없습니다");
+			searchIvl();
+		}
+			
+		
 		}//if문 종료
-			
-			
-		}//for문 종료
-	}//insert문 종료
-	public void show() {
-		
-		System.out.println("---------------------");
-		System.out.println("학생명\t국어\t영어\t수학\t총점\t평균");
-		System.out.println("---------------------");
-		for(int i=0;i<count;i++) {	
-		System.out.print(sList[i].name+"\t");
-		System.out.print(sList[i].kor+"\t");
-		System.out.print(sList[i].eng+"\t");
-		System.out.print(sList[i].math+"\t");
-		System.out.print(sList[i].getTot()+"\t");
-		System.out.println(sList[i].getAvg()+"\t");
-		System.out.println("---------------------");
-			
-		}
-		
-	}
-	public void update() {	
-		if(count == 0) {
-			System.out.println("수정할 학생이 없습니다");
-		}
 		else {
-			boolean updateFlag = true;
-			while(updateFlag) {
-			System.out.println("어느 학생을 수정하시겠습니까?");
-			String searchName = scan.next(); //scan.next()는 내부적으로 new String(...)처럼 새로운 객체를 생성
-			int searchIdx = -1;
-			for(int i=0;i<count;i++) {
-				if(searchName.equals(sList[i].name)) { // ==을 사용할 때 기본형과 참조형이 섞이면 참조형이 언박싱되어 값 비교가 되고,
-					//둘 다 참조형이면 주소 비교가 된다.
-					//sList[i].name 이안에 값은 문자열이기때문에 상수풀에 저장되고 주소가 남겨짐.
-					//searchName도 scan.next()가 new String으로 새롭게 생성해주기때문에 주소값을 가진다 그렇기때문에 두개를 
-					//== 로 비교하면 주소값을 비교하게되니까 안됨
-					searchIdx=i;
-			}
-			}
-			
-				
-			if(searchIdx == -1) {
-				System.out.println("검색하신 학생이 없습니다.");
-			}//if문 종료
-			else {
-				System.out.println("지금 수정하실 학생은"+sList[searchIdx].name+"입니다");
-				System.out.println("국어점수");
-				sList[searchIdx].kor = scan.nextInt();
-				
-				System.out.println("영어점수");
-				sList[searchIdx].eng = scan.nextInt();
-				
-				System.out.println("수학점수");
-				sList[searchIdx].math = scan.nextInt();	
-				
-				System.out.println("update");
-			}//else문 종료
-			
-			System.out.println("수정을 그만하시겠습니까? 그만할거면 n");
-			if(scan.next().equals("n")) {
-				updateFlag = false;
-			}
-		}	
-		}
+			System.out.println("검색할 데이터가 없습니다");
+			menuShow();
+		}//else문 종료
 	}
-	public void remove() {
-		if(count !=0) {
-		System.out.println("삭제하실 학생을 입력해주세요");
-		String deleteName =  scan.next();
-		int deleteIdx = -1;
-		
-		
-		for(int i=0;i<count;i++) {
-			if(deleteName.equals(sList[i].name )) {
-				deleteIdx = i;
-			}
-		}
-		
-		for(int i=deleteIdx;i<count-1;i++ ) {
-			if(i == count-1) {
-				sList[i] = sList[i];
-			}
-			else {
-			sList[i] = sList[i+1];
-			}
-		}
-		count--;
-		System.out.println("remove");
-		}
-		else {
-			System.out.println("삭제할 데이터가 존재하지 않습니다");
-		}
-	}
-	public void search() {
-		System.out.println("학생성적조회화면입니다.");
-		if(count !=0) {
-			boolean searchFlag = true;
-			while(searchFlag) {
-			System.out.println("조회할 학생명");
-			String searchName=scan.next();
-			int searchIdx = -1;
-			for(int i=0;i<count;i++) {
-				if(searchName.equals(sList[i].name)) {
-					searchIdx = i;
+	
+	public void update() {
+		if(count != 0) {
+			int updateIdx = searchIndex("수정");
+
+			if(updateIdx != -1) {
+			
+				System.out.print("국어 점수>");
+				sList[updateIdx].kor = scan.nextInt();
+				System.out.print("수학 점수>");
+				sList[updateIdx].math = scan.nextInt();
+				System.out.print("영어 점수>");
+				sList[updateIdx].eng = scan.nextInt();
+				System.out.print("수정 완료");
+				
+				appearSystem(updateIdx);
+				
+				
+				System.out.print("더 수정하시겠습니까?  맞으면(아무키) : 종료(n)");
+				if(scan.next().equals("n")) {
+					menuShow();
+				}
+				else {
+					update();
 				}
 			}
-			
-			if(searchIdx != -1) {
-				System.out.println("학생명\t국어\t영어\t수학\t총점\t평균");
-				System.out.print(sList[searchIdx].name);
-				System.out.print(sList[searchIdx].kor);
-				System.out.print(sList[searchIdx].eng);
-				System.out.print(sList[searchIdx].math);
-				System.out.print(sList[searchIdx].getTot());
-				System.out.print(sList[searchIdx].getAvg());
-				
-			}else {
-				System.out.println("조회한 학생을 찾을 수 없습니다");
+			else {
+				System.out.println("검색한 학생을 찾을 수가 없습니다");
+				update();
 			}
 			
-			System.out.print("더 조회하시겠습니까? 종료할려면 n");
-			if(scan.next().equals("n")) {
-				searchFlag = false;
-			}
 			
-		}
+			
 			
 		}
 		else {
-			System.out.println("조회할 데이터가 없습니다");
+			System.out.println("검색할 데이터가 없습니다");
+			menuShow();
 		}
+		
+	}
+	
+	public void delete() {
+		if(count != 0) {
+			int deleteIdx = searchIndex("삭제");
+			
+			if(deleteIdx != -1) {
+				for(int i=deleteIdx;i<count-1;i++) {
+					sList[i] = sList[i+1]; 
+				}
+				sList[count-1] = null;
+				count--;
+				System.out.println("삭제가 완료되었습니다");
+				
+				System.out.print("더 삭제하시겠습니까?  맞으면(아무키) : 종료(n)");
+				if(scan.next().equals("n")) {
+					menuShow();
+				}
+				else {
+					delete();
+				}
+				
+				
+				
+			}//if문 종료
+			else {
+				System.out.println("검색한 학생명이 존재하지않습니다");
+				delete();	
+			}//else문 종료
+			
+		}
+		else {
+			System.out.println("검색할 데이터가 없습니다");
+			menuShow();
+		}
+	}//delete문 종료
+	
+	
+	public int searchIndex(String want) {
+		System.out.println(want+"할 학생을 입력해주세요");
+		String searchName = scan.next();
+		int searchIdx = -1;
+		
+		for(int i=0;i<count;i++) {
+			if(searchName.equals(sList[i].name)) {
+					searchIdx = i;
+			}	
+		}//for문 종료
+		return searchIdx;
 	}
 	
 	
 	
 	
+	public void appearSystem(int idx) {
+		System.out.println("학생명\t국어\t수학\t영어\t총점\t평균");
+		System.out.print(sList[idx].name+"\t");
+		System.out.print(sList[idx].kor+"\t");
+		System.out.print(sList[idx].math+"\t");
+		System.out.print(sList[idx].eng+"\t");
+		System.out.print(sList[idx].getTot()+"\t");
+		System.out.print(sList[idx].getAvg()+"\n");
+	}
+
+	
+	
+	
+
 }
