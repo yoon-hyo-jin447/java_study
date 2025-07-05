@@ -1,19 +1,30 @@
 package myTest;
 
 public class Admin1 {
-	static String administration = "윤효진!!!!!!!!!";
+	static String administration = "윤효진";
 	static int password = 1111;
 	
 	public Admin1() {
 		
 	}
 	
-	public static String sendAdmin() {
-		return administration;
+	public static boolean sendAdmin(String a) {
+		if(a.equals(administration) ) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	
 	}
 	
-	public static int sendPassword() {
-		return password;
+	public static boolean sendPassword(int  b) {
+		if(b == password) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 }

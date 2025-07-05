@@ -14,7 +14,7 @@ public class ScoreMgmSystemSvr {
 			System.out.println("관리자 비밀번호를 입력해주세요");
 			int password = scan.nextInt();
 			
-			if(admin.equals(Admin1.sendAdmin()) && password == Admin1.sendPassword()) {
+			if((Admin1.sendAdmin(admin)) && Admin1.sendPassword(password)) {
 			sms.menuShow();
 			}
 			else {
