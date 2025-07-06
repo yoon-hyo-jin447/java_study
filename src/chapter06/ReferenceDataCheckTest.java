@@ -11,9 +11,9 @@ public class ReferenceDataCheckTest {
 		//기본형
 		int a = 10;
 		int b = 10;
-		String str1 = "홍길동은 자바천재";
+		String str1 = "홍길동";
 		String str2 = "홍길동은 자바천재";
-		String str3 = "홍길순은 자바천재";
+		String str3 = "홍길동은 자바천재";
 		
 		// call by value 형태로 값을 비교
 		System.out.println(System.identityHashCode(str1));
@@ -29,7 +29,7 @@ public class ReferenceDataCheckTest {
 		System.out.println(System.identityHashCode(strObj1));
 		System.out.println(System.identityHashCode(strObj2));
 		
-		System.out.println("strObj1 == strObj2 : " + (strObj1 == strObj2));  //stack 주소비교
+		System.out.println("strObj1 == strObj2 : " + (strObj1 == strObj2));  //stack 주소비교 // 기본값과 참조값 비교시 값을 기준으로 비교 참조값과 참조값비교시 주소를 비교
 		System.out.println("strObj1.equals(strObj2) : " + (strObj1.equals(strObj2))); 
 		
 		//
