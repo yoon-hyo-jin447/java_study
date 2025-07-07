@@ -12,7 +12,7 @@ public class ArithmeticOverloading {
 	public int add(double x, double y) {
 		return (int)(x + y);
 	}
-
+ 
 	public int add(String x, String y) { //add("1","2")
 //		Integer Int = new Integer();
 		int xx = Integer.valueOf(x);
