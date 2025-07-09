@@ -16,19 +16,13 @@ public class User {
 	
 	//Method
 	
-	public boolean coinCheck(int coin) {
-		boolean result = false;
-		if(coin == 100 || coin ==500 ) {
-			result = true;
-		}
-		return result;
-	}
+	
 	
 	
 	/*
 	 * 동전 투입
 	 */
-	public int insertCont() {
+	public int insertCoin() {
 		int resultCoin = 0;
 		System.out.println("["+name+"]동전입력> ");
 		if(scan.hasNextInt()) {
@@ -41,7 +35,7 @@ public class User {
 		} else {
 			System.out.println("=> 올바르지 않은 값, 다시 입력해주세요");
 			scan.next();
-			insertCont();
+			insertCoin();
 		}
 		return resultCoin;
 	}
@@ -58,7 +52,7 @@ public class User {
 		} else {
 			System.out.println("=> 올바르지 않은 값, 다시 입력해주세요");
 			scan.next();
-			insertCont();
+			insertCoin();
 		}
 		return menu;
 	}

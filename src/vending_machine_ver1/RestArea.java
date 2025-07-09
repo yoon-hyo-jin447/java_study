@@ -10,10 +10,10 @@ public class RestArea {
 	 }
 	 
 	 public RestArea(String name) {
-		 this.name = name;
-		  user = new User("정국");
+		 this.name = name; //멤버 변수 초기화 작업
+		  user = new User("정국"); //여러사용자를 받는작업 그리고 전국적인 기계
 		  welcome();
-		  machine = new VendingMachine(); //user넣자
+		  machine = new VendingMachine(user); 
 	 }
 	 
 	 public void welcome() {
