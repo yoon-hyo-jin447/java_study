@@ -1,65 +1,61 @@
 package kbank1;
 
-public class AccountVo {
+public class AccountVo1 {
 	private String name;
 	 private String account;
 	 private String password;
-	 private int balance;
+	 private int money;
 	 
 	 
 	 
-	 public AccountVo() {}
-	 
-	 public AccountVo(String name,String account,String password, int balance) {
+	 public AccountVo1() {}
+	 public AccountVo1(String name, String account, String password, int money) {
 		 this.name = name;
 			this.account = account;
 			this.password = password;
-			this.balance = balance;
+			this.money = money;
 	 }
+	 
 
-	 
-	 
-	 
+
 	public String getName() {
 		return name;
 	}
+
+
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
+
+
 	public String getAccount() {
 		return account;
 	}
+
+
 
 	public void setAccount(String account) {
 		this.account = account;
 	}
 
+
+
 	public String getPassword() {
 		return password;
 	}
 
+
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public int getBalance() {
-		return balance;
+	public int getMoney() {
+		return money;
 	}
-
-	public void setBalance(int balance) {
-		this.balance = balance;
+	public void setMoney(int money) {
+		this.money = money;
 	}
 	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-
 }

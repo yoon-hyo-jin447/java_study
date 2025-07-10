@@ -1,67 +1,56 @@
 package kbank1;
 
+
+
+//은행 페이퍼 단 한개만 존재
 public class AccountPaperVo {
-	private  String name;
-	private int account;
-	private int withDraw;
-	private int password;
-	
-	static AccountPaperVo accountpaper = new AccountPaperVo();
-	
-	private AccountPaperVo() {}
+ private String name;
+ private String account;
+ private String password;
+ private int money;
+ 
+ static AccountPaperVo accountPaper = new AccountPaperVo();
+ 
+ private AccountPaperVo() {}
+ 
+ 
+ 
+ 
+public static AccountPaperVo getInstance() {
+	 return accountPaper;
+ }
 
-	
-	
-	public static AccountPaperVo getInstance() {
-		return accountpaper;
-	}
+public String getName() {
+	return name;
+}
 
+public void setName(String name) {
+	this.name = name;
+}
 
+public String getAccount() {
+	return account;
+}
 
-	public String getName() {
-		return name;
-	}
+public void setAccount(String account) {
+	this.account = account;
+}
 
+public String getPassword() {
+	return password;
+}
 
+public void setPassword(String password) {
+	this.password = password;
+}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+public int getMoney() {
+	return money;
+}
 
+public void setMoney(int money) {
+	this.money= money;
+}
 
-
-	public int getAccount() {
-		return account;
-	}
-
-
-
-	public void setAccount(int account) {
-		this.account = account;
-	}
-
-
-
-	public int getwithDraw() {
-		return withDraw;
-	}
-
-
-
-	public void setWithDraw(int withDraw) {
-		this.withDraw = withDraw;
-	}
-
-
-
-	public int getPassword() {
-		return password;
-	}
-
-
-
-	public void setPassword(int password) {
-		this.password = password;
-	}	
-	
+ 
 }
