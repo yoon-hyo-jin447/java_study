@@ -1,4 +1,4 @@
-package kbank1;
+package kbank13;
 
 
 
@@ -9,7 +9,7 @@ public class AccountPaperVo {
  private String password;
  private int money;
  
- static AccountPaperVo accountPaper = new AccountPaperVo();
+ private static AccountPaperVo accountPaper = new AccountPaperVo();
  
  private AccountPaperVo() {}
  

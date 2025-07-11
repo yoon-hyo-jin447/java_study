@@ -13,6 +13,7 @@ public class KBBankTest {
 		Customer hong = new Customer(null, "kb-1234","1234", 100);
 		//고객 홍길동이 출금용지에 이름, 계좌번호, 비밀번호를 작성함
 		hong.setAccountPaper(accountPaper);
+		System.out.println("이름"+accountPaper.getName());
 		
 		
 //		은행 직원 박보검이 용지를 확인함
